@@ -29,8 +29,8 @@ public class ModConfig implements ConfigData {
     @Comment("The vertical speed of freecam.")
     public double verticalSpeed = 1.0;
 
-    @Comment("Whether you can travel through blocks in freecam.")
-    public boolean noclip = true;
+//    @Comment("Whether you can travel through blocks in freecam.")
+//    public boolean noclip = true;
 
     @Comment("Prevents player movement while freecam is active.\nWARNING: Multiplayer usage not advised.")
     public boolean freezePlayer = false;
