@@ -6,8 +6,10 @@ The bind defaults to F4, and can be changed in the vanilla options menu. Speed a
 
 This mod works in multiplayer, but may be considered cheating on some servers, so use it at your own risk.
 
+**This mod has been modified by Moxvallix to remove the ability to clip through walls, to make it compliant with Modrinth's rules.**
+
 ### Requirements
 - [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
 - [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu) (Optional for easier configuration)
 
-Curseforge page [here](https://www.curseforge.com/minecraft/mc-mods/free-cam).
+Original mod's curseforge page [here](https://www.curseforge.com/minecraft/mc-mods/free-cam).
