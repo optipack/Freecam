@@ -2,7 +2,7 @@
 
 This mod was made by [hashalite](https://github.com/hashalite).
 
-This is the Modrinth compliant fork of Freecam, made for the [OptiPack](https://github.com/optipack/optipack).  
+This is the Modrinth compliant fork of [Freecam](https://github.com/hashalite/Freecam), made for the [OptiPack](https://github.com/optipack/optipack).  
 In order to comply with the rules of Modrinth, noclip is disabled for any players without OP.  
 This fork is maintained by [Moxvallix](https://github.com/moxvallix), and will be patched to comply with any requirements for hosting on Modrinth.
 
@@ -16,5 +16,5 @@ The bind defaults to F4, and can be changed in the vanilla options menu. Speed a
 This mod works in multiplayer, but may be considered cheating on some servers, so use it at your own risk.
 
 ### Requirements
-- [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
-- [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu) (Optional for easier configuration)
+- [Fabric API](https://modrinth.com/mod/fabric-api)
+- [Mod Menu](https://modrinth.com/mod/modmenu) (Optional for easier configuration)
