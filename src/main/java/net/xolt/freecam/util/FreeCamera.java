@@ -90,8 +90,11 @@ public class FreeCamera extends ClientPlayerEntity {
 
     @Override
     public void tickMovement() {
-//        noClip = ModConfig.INSTANCE.noclip;
-    	noClip = false;
+    	if (MC.player.hasPermissionLevel(3)) {
+    		noClip = ModConfig.INSTANCE.noclip;
+    	} else {
+    		noClip = false;
+    	}
         if (ModConfig.INSTANCE.flightMode.equals(ModConfig.FlightMode.DEFAULT)) {
             getAbilities().setFlySpeed(0);
             Motion.doMotion(this, ModConfig.INSTANCE.horizontalSpeed, ModConfig.INSTANCE.verticalSpeed);

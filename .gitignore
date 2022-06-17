@@ -13,6 +13,18 @@ out/
 # JIRA plugin
 atlassian-ide-plugin.xml
 
+# Eclipse
+*.launch
+*.prefs
+.classpath
+.project
+.settings/
+bin/
+
+# KDE / Linux
+*.directory
+*.kate-swp
+
 # Compiled class file
 *.class
 
