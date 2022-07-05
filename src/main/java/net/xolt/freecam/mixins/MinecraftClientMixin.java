@@ -19,17 +19,20 @@ public class MinecraftClientMixin {
     // Prevents player from being controlled when freecam is enabled.
     @Inject(method = "tick", at = @At("HEAD"))
     private void onTick(CallbackInfo ci) {
-        if (Freecam.isEnabled() && MC.player != null && MC.player.input instanceof KeyboardInput && !Freecam.isPlayerControlEnabled()) {
-            Input input = new Input();
-            input.sneaking = MC.player.input.sneaking; // Makes player continue to sneak after freecam is enabled.
-            MC.player.input = input;
+        if (Freecam.isEnabled()) {
+            if (MC.player != null && MC.player.input instanceof KeyboardInput && !Freecam.isPlayerControlEnabled()) {
+                Input input = new Input();
+                input.sneaking = MC.player.input.sneaking; // Makes player continue to sneak after freecam is enabled.
+                MC.player.input = input;
+            }
+            MC.gameRenderer.setRenderHand(ModConfig.INSTANCE.showHand);
         }
     }
 
     // Prevents attacks when allowInteract is disabled.
     @Inject(method = "doAttack", at = @At("HEAD"), cancellable = true)
     private void onDoAttack(CallbackInfoReturnable<Boolean> cir) {
-        if (Freecam.isEnabled() && !ModConfig.INSTANCE.allowInteract) {
+        if (Freecam.isEnabled() && !Freecam.isPlayerControlEnabled() && !ModConfig.INSTANCE.allowInteract) {
             cir.cancel();
         }
     }
@@ -37,7 +40,7 @@ public class MinecraftClientMixin {
     // Prevents item pick when allowInteract is disabled.
     @Inject(method = "doItemPick", at = @At("HEAD"), cancellable = true)
     private void onDoItemPick(CallbackInfo ci) {
-        if (Freecam.isEnabled() && !ModConfig.INSTANCE.allowInteract) {
+        if (Freecam.isEnabled() && !Freecam.isPlayerControlEnabled() && !ModConfig.INSTANCE.allowInteract) {
             ci.cancel();
         }
     }
@@ -45,7 +48,15 @@ public class MinecraftClientMixin {
     // Prevents block breaking when allowInteract is disabled.
     @Inject(method = "handleBlockBreaking", at = @At("HEAD"), cancellable = true)
     private void onHandleBlockBreaking(CallbackInfo ci) {
-        if (Freecam.isEnabled() && !ModConfig.INSTANCE.allowInteract) {
+        if (Freecam.isEnabled() && !Freecam.isPlayerControlEnabled() && !ModConfig.INSTANCE.allowInteract) {
+            ci.cancel();
+        }
+    }
+
+    // Prevents hotbar keys from changing selected slot when freecam key is held
+    @Inject(method = "handleInputEvents", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/option/KeyBinding;wasPressed()Z", ordinal = 2), cancellable = true)
+    private void onHandleInputEvents(CallbackInfo ci) {
+        if (Freecam.getFreecamBind().isPressed()) {
             ci.cancel();
         }
     }
