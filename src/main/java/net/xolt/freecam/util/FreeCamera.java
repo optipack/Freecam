@@ -90,7 +90,7 @@ public class FreeCamera extends ClientPlayerEntity {
 
     @Override
     public void tickMovement() {
-    	if (MC.player.hasPermissionLevel(1)) {
+    	if (MC.player.hasPermissionLevel(1) || MC.isInSingleplayer()) {
     		noClip = ModConfig.INSTANCE.noclip;
     	} else {
     		noClip = false;
